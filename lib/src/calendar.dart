@@ -1,12 +1,16 @@
-import 'package:calendar/calendar.dart';
-import 'package:calendar/src/views/header_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/calendar_bloc.dart';
 import 'common/helper.dart';
 import 'common/typedef.dart';
 import 'resource/resource_view.dart';
+import 'settings/calendar_theme.dart';
+import 'settings/resource_view_settings.dart';
+import 'settings/time_slot_view_settings.dart';
+import 'settings/view_header_settings.dart';
 import 'views/calendar_view.dart';
+import 'views/header_view.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({
@@ -74,61 +78,63 @@ class _CalendarState extends State<Calendar> {
           width: width,
           height: height,
           color: widget.theme.backgroundColor,
-          child: Stack(children: [
-            Positioned(
-              top: 0,
-              right: 0,
-              left: 0,
-              height: viewHeaderHeight,
-              child: Stack(
-                children: [
-                  HeaderView(
-                    timeRulerSize: timeRulerSize,
-                    viewHeaderSettings: widget.viewHeaderSettings,
-                    cellBorder: widget.theme.cellBorder,
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: timeRulerSize,
-                    child: BlocBuilder<CalendarBloc, CalendarState>(
-                      builder: (context, state) {
-                        final resources = state.dataSource?.resources ?? const [];
-                        final resourceViewWidth = width - timeRulerSize;
-                        final resourceItemWidth = getResourceItemWidth(
-                          width: resourceViewWidth,
-                          resourceCount: resources.length,
-                          resourceViewSettings: widget.resourceViewSettings,
-                        );
-                        return ResourceViewWidget(
-                          resources: resources,
-                          scrollController: resourceScrollCtrl,
-                          resourceItemWidth: resourceItemWidth,
-                          resourceViewSettings: widget.resourceViewSettings,
-                          resourceBuilder: widget.resourceBuilder,
-                          cellBorder: widget.theme.cellBorder,
-                        );
-                      },
+          child: Stack(
+            children: [
+              Positioned(
+                top: 0,
+                right: 0,
+                left: 0,
+                height: viewHeaderHeight,
+                child: Stack(
+                  children: [
+                    HeaderView(
+                      timeRulerSize: timeRulerSize,
+                      viewHeaderSettings: widget.viewHeaderSettings,
+                      cellBorder: widget.theme.cellBorder,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      bottom: 0,
+                      left: timeRulerSize,
+                      child: BlocBuilder<CalendarBloc, CalendarState>(
+                        builder: (context, state) {
+                          final resources = state.dataSource?.resources ?? const [];
+                          final resourceViewWidth = width - timeRulerSize;
+                          final resourceItemWidth = getResourceItemWidth(
+                            width: resourceViewWidth,
+                            resourceCount: resources.length,
+                            resourceViewSettings: widget.resourceViewSettings,
+                          );
+                          return ResourceViewWidget(
+                            resources: resources,
+                            scrollController: resourceScrollCtrl,
+                            resourceItemWidth: resourceItemWidth,
+                            resourceViewSettings: widget.resourceViewSettings,
+                            resourceBuilder: widget.resourceBuilder,
+                            cellBorder: widget.theme.cellBorder,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Positioned(
-              top: viewHeaderHeight,
-              right: 0,
-              left: 0,
-              bottom: 0,
-              child: CalendarViewWidget(
-                theme: widget.theme,
-                timelineScrollCtrl: timelineScrollCtrl,
-                timeSlotViewSettings: widget.timeSlotViewSettings,
-                resourceViewSettings: widget.resourceViewSettings,
-                appointmentBuilder: widget.appointmentBuilder,
+              Positioned(
+                top: viewHeaderHeight,
+                right: 0,
+                left: 0,
+                bottom: 0,
+                child: CalendarViewWidget(
+                  theme: widget.theme,
+                  timelineScrollCtrl: timelineScrollCtrl,
+                  timeSlotViewSettings: widget.timeSlotViewSettings,
+                  resourceViewSettings: widget.resourceViewSettings,
+                  appointmentBuilder: widget.appointmentBuilder,
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         );
       },
     );

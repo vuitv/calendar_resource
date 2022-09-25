@@ -1,5 +1,7 @@
-import 'package:calendar/calendar.dart';
 import 'package:flutter/material.dart';
+
+import '../data/appointment.dart';
+import '../data/resource.dart';
 
 typedef ResourceBuilder = Widget Function(
   BuildContext context,

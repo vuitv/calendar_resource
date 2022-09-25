@@ -1,7 +1,7 @@
-import 'package:calendar/src/views/current_date.dart';
 import 'package:flutter/material.dart';
 
 import '../settings/view_header_settings.dart';
+import '../views/current_date.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({

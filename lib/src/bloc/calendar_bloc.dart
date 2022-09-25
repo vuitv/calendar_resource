@@ -1,9 +1,11 @@
 import 'dart:async';
 
-import 'package:calendar/calendar.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../common/enums.dart';
+import '../data/data_source.dart';
 
 part 'calendar_event.dart';
 

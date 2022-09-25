@@ -1,10 +1,12 @@
 import 'dart:math';
 
-import 'package:calendar/calendar.dart';
-import 'package:calendar/src/common/helper.dart';
-import 'package:calendar/src/common/typedef.dart';
 import 'package:flutter/material.dart';
 
+import '../common/helper.dart';
+import '../common/typedef.dart';
+import '../data/appointment.dart';
+import '../data/resource.dart';
+import '../settings/time_slot_view_settings.dart';
 import 'appointment_item.dart';
 
 class AppointmentView extends StatelessWidget {

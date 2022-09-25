@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
-import '../../calendar.dart';
+import '../../calendar_resource.dart';
 
 class TimeRulerView extends CustomPainter {
   TimeRulerView({

@@ -1,4 +1,4 @@
-import 'package:calendar_resource/calendar.dart';
+import 'package:calendar_resource/calendar_resource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

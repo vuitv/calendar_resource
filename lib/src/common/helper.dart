@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import '../settings/resource_view_settings.dart';
-import '../settings/time_slot_view_settings.dart';
 
 double getResourceItemWidth({
   required double width,
