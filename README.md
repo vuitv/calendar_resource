@@ -10,7 +10,7 @@ A package calendar making by Vido Team
 
 # Preview
 
-<img src="https://raw.github.com/vuitv/calendar_resource/assets/preview.png">
+![Screenshot](assets/preview.png)
 
 # Install
 
