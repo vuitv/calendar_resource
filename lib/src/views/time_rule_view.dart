@@ -41,7 +41,7 @@ class TimeRulerView extends CustomPainter {
     _textPainter
       ..textDirection = TextDirection.ltr
       ..textWidthBasis = TextWidthBasis.longestLine
-      ..textScaleFactor = 1;
+      ..textScaler = TextScaler.noScaling;
 
     final timeTextStyle = timeSlotViewSettings.timeTextStyle;
 
